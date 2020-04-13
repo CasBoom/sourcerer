@@ -12,6 +12,7 @@ while(running):
     command = input('> ').lower()
     if(command.lower() == 'add'):
         sources.append(s.Source())
+        sources[len(sources)-1].create(sources)
 
     if(command == 'show'):
         for source in sources:
