@@ -35,7 +35,7 @@ class Source:
 
     #returns the source as a dict
     def dict(self):
-        return {self.key:[self.title, {'Authors': self.authors}]}
+        return {'title': self.title, 'authors': self.authors}
 
     #formats and adds the authors specified by the user
     def add_authors(self):
