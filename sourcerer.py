@@ -7,17 +7,28 @@ start = st.Start()
 start.render()
 sources = []
 
+print("Write \"help\" in order to view all commands")
+
 running = True
 while(running):
     command = input('> ').lower()
 
+    #shows all commands
+    if(command == 'help' or command == 'h'):
+        print("""..:::COMMANDS:::..
+add  / a : adds a source
+view / v : shows all keys + title pairs
+save / s : saves all sources as a JSON file
+load / l : loads soures from a JSON file
+quit / q : closes the script""")
+
     #adds a source
-    if(command.lower() == 'add'):
+    if(command == 'add' or command == 'a'):
         sources.append(s.Source())
         sources[len(sources)-1].create(sources)
 
     #shows all sources
-    if(command == 'show'):
+    if(command == 'view' or command == 'v'):
         for source in sources:
             print(source.key+": "+source.title)
     
@@ -49,7 +60,7 @@ while(running):
             source_list = json.load(f)
             for key, data in source_list.items():
                 sources.append(s.Source())
-                sources[len(sources)-1].generate(key, data['title'], data['authors'])
+                sources[len(sources)-1].generate(key, data['title'], data['authors'], data['date'], data['viewing_date'], data['url'])
         else:
             print('This file doesn\'t exist')
 

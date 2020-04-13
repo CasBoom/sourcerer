@@ -3,6 +3,9 @@ class Source:
         self.key = ""
         self.title = ""
         self.authors = []
+        self.date = ""
+        self.viewing_date = ""
+        self.url = ""
     
     # allows the user to manually create a source object
     def create(self, sources):
@@ -10,6 +13,9 @@ class Source:
         self.add_key(sources)
         self.title = input('Enter the title of the source: ')
         self.authors = self.add_authors()
+        self.date = input('Enter the publication date of the source: ')
+        self.viewing_date = input('Enter the date you\'ve viewed the source: ')
+        self.url = input('Enter the URL of the source: ')
 
     # adds an unique user defined key
     def add_key(self, sources):
@@ -27,15 +33,18 @@ class Source:
         return True
     
     # generates a source object based on the parameters
-    def generate(self, key, title, authors):
+    def generate(self, key, title, authors, date, viewing_date, url):
         print('generating '+ key + '...')
         self.key = key
         self.title = title
         self.authors = authors
+        self.date = date
+        self.viewing_date = viewing_date
+        self.url = url
 
     #returns the source as a dict
     def dict(self):
-        return {'title': self.title, 'authors': self.authors}
+        return {'title': self.title, 'authors': self.authors, 'date': self.date, 'viewing_date' : self.viewing_date, 'url' : self.url}
 
     #formats and adds the authors specified by the user
     def add_authors(self):
