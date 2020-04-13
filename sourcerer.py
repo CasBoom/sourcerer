@@ -23,14 +23,19 @@ while(running):
     
     #saves all sources as a JSON file
     if(command == 's' or command == 'save' ):
-        tree = {}
-        for source in sources:
-            tree[source.key] = source.dict()
-        js = json.dumps(tree)
+        files = os.listdir(os.path.join("sources"))
         name = input('Save file as: ')
-        f = open(os.path.join("sources", name+".json"), "x")
-        f.write(js)
-        f.close()
+        if(name+".json" not in files):    
+            tree = {}
+            for source in sources:
+                tree[source.key] = source.dict()
+            js = json.dumps(tree)
+            
+            f = open(os.path.join("sources", name+".json"), "x")
+            f.write(js)
+            f.close()
+        else:
+            print("Sorry, a file with this name already exists")
 
     #loads soures from a JSON file
     if(command == 'l' or command == 'load' ):
