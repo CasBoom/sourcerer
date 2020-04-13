@@ -1,3 +1,5 @@
-class Apa_source:
-    def __construct__(self):
-        pass
+class Source:
+    def __init__(self):
+        print('creating a new source...')
+        self.key = input('Assign a key to this source: ')
+        self.authors = []
